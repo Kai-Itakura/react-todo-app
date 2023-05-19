@@ -1,12 +1,15 @@
 import React from 'react'
-import sampleData from './sampleData.json'
 import styles from './TaskList.module.scss'
 import TaskItem from '../taskItem/TaskItem'
+import { useSelector } from 'react-redux'
+import { selectTask } from '../taskSlice'
 
 const TaskList = (): JSX.Element => {
+  const tasks = useSelector(selectTask)
+
   return (
     <div className={styles.root}>
-      {sampleData.map((task) => (
+      {tasks.map((task) => (
         <TaskItem key={task.id} task={task} />
       ))}
     </div>
